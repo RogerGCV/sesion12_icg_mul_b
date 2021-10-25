@@ -1,0 +1,44 @@
+<canvas id='tablero' width=800 height=600>
+<script>
+	
+	function polygon(cd, colorBorde, colorRelleno, grosor) { 
+	ctx.beginPath()
+	ctx.strokeStyle = colorBorde
+	ctx.fillStyle = colorRelleno
+	ctx.lineWidth = grosor;
+	ctx.moveTo(cd[0],cd[1])
+	for (i=2; i < cd.length; i+=2)
+	ctx.lineTo(cd[i],cd[i+1]);
+	ctx.closePath()
+	ctx.stroke()
+	ctx.fill()
+}
+
+        function rotacionPunto(cx0b, cy0b, rot){
+        var mr = [[Math.cos(r), -Math.sin(r)],[Math.sin(r),Math.cos(r)]]
+}
+
+	function rotacionObj(obj,r){
+	var s = [];
+	for (i=0; i < obj.length; i++){
+            var pr = rotacionPunto(obj[i], obj[i+1],r)
+	    s[i]=pr[i==0 ? 0 : 1];
+        }
+	return s;
+}
+
+	var canvas = document.getElementById('tablero')
+	var ctx = canvas.getContext('2d');
+
+	var LetraE = [0, 0, 0, 50, 40, 50, 40, 40, 10, 40, 10, 30, 20, 30, 20, 20, 10, 20, 10, 10, 40, 10, 40, 0];
+
+	var r = Math.PI/6;
+
+	var LetraE_rotada = rotacionObj(LetraE, r)
+
+	polygon(LetraE, 'magenta','magenta', 5)
+
+	polygon(LetraE_trans, 'black','green', 4)
+
+
+</script>
